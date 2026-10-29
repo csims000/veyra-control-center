@@ -125,6 +125,39 @@ body:after{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opaci
 .hero{min-height:240px;border-color:#087bdc;background:linear-gradient(90deg,#03142cf0 0%,#03142ca8 43%,#03142c18 100%),radial-gradient(ellipse at 80% 65%,#0868e9a8 0%,transparent 34%),linear-gradient(135deg,#041a3a,#020918 72%);position:relative;overflow:hidden;box-shadow:0 0 25px #087dff13}.hero:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 76% 40%,#a8e9ff 0 1px,transparent 2px),radial-gradient(circle at 86% 26%,#7ccfff 0 1px,transparent 2px),radial-gradient(circle at 67% 20%,#fff 0 1px,transparent 2px),radial-gradient(ellipse at 85% 100%,#087dff8c,transparent 38%);background-size:120px 100px,170px 130px,90px 80px,auto;pointer-events:none}.hero:after{content:"";position:absolute;width:250px;height:250px;right:6%;top:12px;border-radius:50%;background:radial-gradient(circle at 30% 25%,#b8f4ff,#208fff 35%,#061c54 68%,#010718 73%);box-shadow:0 0 45px #168bff88,inset -22px -14px 40px #010719;opacity:.75;mask-image:linear-gradient(110deg,transparent 0%,#000 35%,#000 70%,transparent 100%)}.hero-content{position:relative;z-index:1;max-width:68%}.hero h1{font-size:clamp(30px,3.2vw,44px)!important;line-height:1.04}.hero h1 span{display:block;color:#4caaff}.hero p{max-width:460px}.btn.primary{background:linear-gradient(100deg,#0b75f7,#11b7ff);box-shadow:0 0 20px #078bff40}.panel,.stat{border-color:#0d4c85;background:linear-gradient(145deg,#06162c,#041025)}.stat strong{font-size:27px}.section-heading h2{font-size:15px}.section-heading{margin-top:18px}.page-layout{grid-template-columns:minmax(0,1.6fr) minmax(250px,.9fr);gap:12px}.widget-grid{grid-template-columns:1fr 1fr}.app-link{background:#071b36;border:1px solid #0e3c69}.app-icon{box-shadow:0 0 15px #138cff25}.footer{padding:15px 0}
 @media(max-width:1050px){.sidebar{width:230px}.page-layout{grid-template-columns:1fr}.hero-content{max-width:80%}.hero:after{right:-6%}}
 @media(max-width:700px){.sidebar{width:72px;padding:12px 8px}.brand{justify-content:center;padding:0 0 14px}.brand .logo{width:42px;height:44px}.brand>div:nth-child(2),.section-label,.nav button:not(.active),.side-bottom,.nav button .nav-count,.nav button .nav-new{display:none}.nav button{justify-content:center;font-size:0;padding:10px 0}.nav button .ico{font-size:20px}.nav button.active{font-size:0}.hero{min-height:270px}.hero-content{max-width:100%}.hero:after{opacity:.28;right:-60px;top:70px}.topbar{padding:10px}.datebox{display:none}.widget-grid{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* Airier spacing pass: keep VEYRA's look, reduce visual crowding */
+.app{grid-template-columns:260px minmax(0,1fr)}
+.sidebar{padding:25px 15px 18px;gap:28px}
+.brand{padding-bottom:22px}
+.nav{gap:8px}
+.nav button{min-height:43px;padding:11px 13px;gap:13px}
+.side-bottom{display:grid;gap:8px}
+.workspace-label{margin-bottom:3px}
+.workspace-chip{padding:11px 12px;min-height:46px}
+.main{padding:0 clamp(22px,2.5vw,40px) 38px}
+.topbar{margin-bottom:25px;min-height:90px;gap:22px}
+.top-right{gap:13px}
+.hero{margin-bottom:22px;padding:39px 34px;min-height:305px}
+.page-layout,.grid{gap:20px}
+.left-col,.right-col{gap:20px}
+.panel{padding:21px}
+.panel-head{margin-bottom:19px;gap:16px}
+.stats{gap:14px;margin-bottom:20px}
+.stat{padding:16px;min-height:122px}
+.widget-grid{gap:18px}
+.apps{gap:12px}
+.app-link{padding:12px 5px 10px}
+.app-icon{margin-bottom:10px}
+.task{padding:15px 0;gap:13px}
+.activity-item{padding:13px 0;gap:12px}
+.section-heading{margin:25px 3px 14px}
+.subpage{gap:20px}
+.subpage .panel{padding:23px}
+.footer{padding:26px 0 0}
+@media(max-width:1150px){.app{grid-template-columns:235px minmax(0,1fr)}.main{padding-left:22px;padding-right:22px}.page-layout,.grid{gap:16px}.panel{padding:18px}}
+@media(max-width:900px){.sidebar{gap:18px}.nav{gap:5px}.nav button{min-height:40px}.main{padding-left:18px;padding-right:18px}.topbar{margin-bottom:18px}.hero{padding:30px 24px;min-height:280px}.left-col,.right-col{gap:15px}}
+@media(max-width:650px){.app{display:block}.sidebar{gap:10px;padding:10px 12px}.nav{gap:4px}.nav button{min-height:36px;padding:8px 10px}.main{padding:0 14px 28px}.topbar{margin-bottom:15px;min-height:65px;gap:8px}.hero{margin-bottom:16px;padding:25px 18px;min-height:265px}.panel,.subpage .panel{padding:15px}.stats{gap:9px;margin-bottom:14px}.stat{padding:12px;min-height:100px}.page-layout,.grid,.left-col,.right-col{gap:14px}.widget-grid{gap:12px}.section-heading{margin:18px 2px 10px}.task{padding:12px 0}.activity-item{padding:10px 0}.footer{padding-top:20px}}
 </style>
 </head>
 <body>
