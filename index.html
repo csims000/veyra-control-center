@@ -251,6 +251,14 @@ body.light .hero{background:linear-gradient(100deg,#e4efffef,#d8e8ffdf)}
 body.light .hero h1,body.light .hero p{color:#10233d}
 body.light .hero h1 span{color:var(--accent);background:none}
 body.light .task-copy b,body.light .panel-head h2,body.light .setting-row b{color:#10233d}
+
+/* Keep the wallpaper above the body background and below the app and starfield. */
+body::before{z-index:0!important}
+#space-canvas{position:fixed!important;inset:0!important;z-index:1!important;pointer-events:none!important}
+.app{position:relative;z-index:2}
+#overlay,.toast{z-index:20}
+#authGate{position:relative;z-index:3}
+body.light::before{background-image:linear-gradient(rgba(239,246,255,.42),rgba(239,246,255,.42)),var(--veyra-wallpaper,none)!important}
 </style>
 </head>
 <body>
