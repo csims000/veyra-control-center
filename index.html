@@ -330,7 +330,7 @@ veyraAuthClient.auth.onAuthStateChange((event,session)=>{if(event==='SIGNED_OUT'
 
 <script>
 'use strict';
-const $=s=>document.querySelector(s),$=s=>[...document.querySelectorAll(s)];
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const safeLoad=(k,f)=>{try{const scope=localStorage.getItem('veyra-active-user')||'legacy';const v=JSON.parse(localStorage.getItem('veyra-'+(scope==='legacy'?'legacy-':'user-'+scope+'-')+k));return v??f}catch{return f}};
 let veyraCloudReady=false,veyraCloudTimer=null,veyraCloudBusy=false,veyraCloudPending=false;
 const veyraCloudKeys=['tasks','notes','activity','settings','events','messages','calendar'];
