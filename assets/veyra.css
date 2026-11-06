@@ -791,3 +791,6 @@ body.light .search button{background:#fff;border-color:#c7d9ed}
 .calendar-modal-reminder>label{display:block;margin-bottom:9px}
 .calendar-modal-reminder .calendar-sketch-input{min-height:90px;max-height:150px}
 @media(max-width:580px){.calendar-modal-backdrop{padding:10px}.calendar-day-modal{padding:15px;border-radius:14px}.calendar-modal-grid{grid-template-columns:1fr;gap:9px}.calendar-modal-head h2{font-size:19px}}
+
+.month-day-count{display:block;width:100%;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#c8b4ff;font-size:9px;line-height:1.25;font-weight:650}.month-day{gap:5px}
+@media(max-width:420px){.month-day-count{display:block;font-size:7px}}
