@@ -7,6 +7,15 @@
 <link rel="stylesheet" href="assets/veyra.css">
 </head>
 <body>
+<div id="veyraLoader" role="status" aria-label="Loading VEYRA" style="position:fixed;inset:0;z-index:100000;display:grid;place-items:center;background:radial-gradient(ellipse at 50% 42%,#0b2b52 0%,#06152a 42%,#020711 100%);color:#eaf6ff;font-family:Inter,system-ui,sans-serif">
+ <div style="display:grid;justify-items:center;gap:18px;text-align:center;padding:24px">
+  <div class="veyra-loader-emblem" style="width:76px;height:76px;display:grid;place-items:center;border-radius:24px;border:1px solid #58cfff88;background:linear-gradient(145deg,#153e70,#07172d);box-shadow:0 0 48px #168cff55,inset 0 1px #ffffff30;font-size:46px;font-weight:800;color:#9beaff">V</div>
+  <div style="font-size:25px;font-weight:800;letter-spacing:.28em;padding-left:.28em">VEYRA</div>
+  <div style="font-size:10px;letter-spacing:.22em;color:#80b8ef">PERSONAL CONTROL CENTER</div>
+  <div style="width:190px;height:3px;overflow:hidden;border-radius:99px;background:#183657;margin-top:8px"><span style="display:block;width:42%;height:100%;border-radius:99px;background:linear-gradient(90deg,#42dfff,#287cff);box-shadow:0 0 14px #35baff;animation:veyraLoadSweep 1.15s ease-in-out infinite"></span></div>
+  <div style="font-size:11px;color:#8ba9ca;letter-spacing:.08em">Preparing your workspace…</div>
+ </div>
+</div>
 <div id="authGate"><section class="auth-card"><div class="auth-brand"><div class="auth-mark">V</div><div><strong style="letter-spacing:.25em">VEYRA</strong><div style="font-size:10px;color:#89b8ed;letter-spacing:.13em">PERSONAL CONTROL CENTER</div></div></div><div id="authFormWrap"><h1 id="authTitle">Welcome back</h1><p id="authSubtitle">Sign in to open your personal workspace.</p><form id="veyraAuthForm"><label for="veyraUsername">Username</label><input id="veyraUsername" name="username" autocomplete="username" minlength="3" maxlength="24" pattern="[A-Za-z0-9_]{3,24}" required placeholder="Your username"><label for="veyraPassword">Password</label><input id="veyraPassword" name="password" type="password" autocomplete="current-password" minlength="8" required placeholder="At least 8 characters"><div class="auth-actions"><button class="primary" id="authSubmit" type="submit">Sign in</button></div></form><p style="margin-top:17px">New to VEYRA? <button class="auth-switch" id="authMode" type="button">Create an account</button></p><div class="auth-error" id="authError" role="alert"></div><p class="auth-note">Username and password only. Use a password you don't use anywhere else. Password recovery by email is not available for this username-only setup.</p></div></section></div>
 
 <div class="app">
@@ -27,4 +36,15 @@
 <script src="assets/veyra-app.js"></script>
 <script src="assets/veyra-effects.js"></script>
 
+
+<script>
+window.addEventListener('load',function(){
+ const loader=document.getElementById('veyraLoader');
+ if(!loader)return;
+ window.setTimeout(function(){
+  loader.classList.add('veyra-loader-exit');
+  window.setTimeout(function(){loader.remove()},450);
+ },650);
+});
+</script>
 </body></html>
