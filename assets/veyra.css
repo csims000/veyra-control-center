@@ -426,3 +426,48 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{
 @media(max-width:900px){.app{grid-template-columns:220px minmax(0,1fr)}.main{padding-inline:18px}}
 @media(max-width:650px){.app{grid-template-columns:1fr}.sidebar{position:relative;border-right:0;border-bottom:1px solid rgba(68,142,220,.22);padding:14px}.main{padding:0 14px 28px}.topbar{min-height:72px}.hero{min-height:250px;padding:24px 20px}.panel{padding:15px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+
+/* Sign-in atmosphere: brighter, welcoming details without changing the layout. */
+#authGate{
+ background:
+  radial-gradient(ellipse at 50% 18%,rgba(22,112,226,.24),transparent 38%),
+  radial-gradient(ellipse at 12% 82%,rgba(30,204,255,.13),transparent 34%),
+  radial-gradient(ellipse at 88% 78%,rgba(91,73,255,.16),transparent 36%),
+  linear-gradient(145deg,#030914,#06172c 52%,#030b18);
+ isolation:isolate
+}
+#authGate::before{
+ content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.48;
+ background-image:
+  radial-gradient(circle at 14% 22%,#a9eaff 0 1px,transparent 1.8px),
+  radial-gradient(circle at 78% 18%,#65caff 0 1px,transparent 2px),
+  radial-gradient(circle at 88% 64%,#b9caff 0 1px,transparent 2px),
+  radial-gradient(circle at 23% 76%,#5fdfff 0 1px,transparent 2px),
+  radial-gradient(circle at 66% 86%,#8abaff 0 1px,transparent 2px),
+  linear-gradient(rgba(69,145,220,.035) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(69,145,220,.035) 1px,transparent 1px);
+ background-size:auto,auto,auto,auto,auto,44px 44px,44px 44px
+}
+#authGate::after{
+ content:"";position:absolute;width:min(68vw,680px);aspect-ratio:1;border:1px solid rgba(69,169,255,.10);border-radius:50%;z-index:-1;pointer-events:none;box-shadow:0 0 0 42px rgba(45,133,230,.025),0 0 0 100px rgba(45,133,230,.018),inset 0 0 70px rgba(35,137,255,.045)
+}
+.auth-card{
+ position:relative;overflow:hidden;border-color:rgba(79,166,255,.48);
+ background:linear-gradient(150deg,rgba(12,34,62,.97),rgba(4,15,31,.98));
+ box-shadow:0 28px 100px rgba(0,0,0,.52),0 0 65px rgba(20,115,230,.16),inset 0 1px rgba(255,255,255,.045)
+}
+.auth-card::before{
+ content:"";position:absolute;left:0;right:0;top:0;height:2px;
+ background:linear-gradient(90deg,transparent,#53dfff 28%,#398cff 68%,transparent)
+}
+.auth-mark{box-shadow:0 0 24px rgba(46,157,255,.30),inset 0 1px rgba(255,255,255,.35)}
+.auth-card h1{letter-spacing:-.035em}
+.auth-card input{transition:border-color .18s ease,box-shadow .18s ease,background .18s ease}
+.auth-card input:focus{background:#06172b}
+.auth-actions button.primary{box-shadow:0 8px 24px rgba(24,112,239,.25);transition:transform .18s ease,filter .18s ease,box-shadow .18s ease}
+.auth-actions button.primary:hover{transform:translateY(-1px);filter:brightness(1.12);box-shadow:0 12px 30px rgba(24,112,239,.34)}
+.auth-switch{transition:color .18s ease}
+.auth-switch:hover{color:#b7eaff}
+.auth-note{border-top:1px solid rgba(92,155,218,.14);padding-top:13px}
+@media(prefers-reduced-motion:reduce){.auth-card input,.auth-actions button.primary,.auth-switch{transition:none}}
+
