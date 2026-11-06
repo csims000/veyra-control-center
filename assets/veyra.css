@@ -772,3 +772,22 @@ body.light .search button{background:#fff;border-color:#c7d9ed}
 @media(max-width:1120px){.calendar-main-layout{grid-template-columns:minmax(0,1.55fr) minmax(225px,.8fr);gap:10px}.calendar-side-rail>.panel{padding:13px}.month-days-grid{grid-auto-rows:minmax(64px,1fr)}}
 @media(max-width:850px){.calendar-main-layout{grid-template-columns:1fr}.calendar-side-rail{grid-template-columns:repeat(2,minmax(0,1fr))}.calendar-side-rail>.panel{height:100%}}
 @media(max-width:560px){.calendar-side-rail{grid-template-columns:1fr}.calendar-side-rail>.panel{padding:15px}}
+
+/* Interactive calendar day planner modal */
+.calendar-modal-backdrop{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;padding:20px;background:rgba(3,8,20,.72);backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px);overflow-y:auto}
+.calendar-day-modal{width:min(680px,100%);max-height:min(86vh,760px);overflow:auto;padding:22px;border:1px solid var(--line);border-radius:18px;background:var(--panel);box-shadow:0 24px 90px #0009;animation:calendarModalIn .18s ease-out}
+@keyframes calendarModalIn{from{opacity:0;transform:translateY(8px) scale(.985)}to{opacity:1;transform:translateY(0) scale(1)}}
+.calendar-modal-head{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;padding-bottom:17px;border-bottom:1px solid var(--line)}
+.calendar-modal-head h2{font-size:22px;margin:0;letter-spacing:-.035em}
+.calendar-modal-head p{font-size:11px;color:var(--muted);margin:6px 0 0}
+.calendar-modal-close{width:34px;height:34px;border:1px solid var(--line);border-radius:9px;background:var(--panel2);color:var(--text);font-size:23px;cursor:pointer;flex:0 0 auto}
+.calendar-modal-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px;padding:17px 0}
+.calendar-modal-section{display:grid;align-content:start;gap:8px;min-width:0;padding:14px;border:1px solid var(--line);border-radius:12px;background:var(--panel2)}
+.calendar-modal-section h3{font-size:12px;margin:0 0 3px}
+.calendar-modal-section label,.calendar-modal-reminder label{font-size:10px;font-weight:700;color:var(--muted)}
+.calendar-modal-section .field{width:100%;min-width:0;box-sizing:border-box}
+.calendar-modal-section .btn{margin-top:4px}
+.calendar-modal-reminder{padding-top:14px;border-top:1px solid var(--line)}
+.calendar-modal-reminder>label{display:block;margin-bottom:9px}
+.calendar-modal-reminder .calendar-sketch-input{min-height:90px;max-height:150px}
+@media(max-width:580px){.calendar-modal-backdrop{padding:10px}.calendar-day-modal{padding:15px;border-radius:14px}.calendar-modal-grid{grid-template-columns:1fr;gap:9px}.calendar-modal-head h2{font-size:19px}}
