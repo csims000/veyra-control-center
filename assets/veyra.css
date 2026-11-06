@@ -513,4 +513,14 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{
   animation:none!important
  }
 }
+/* Branded startup screen shown before the sign-in gate. */
+@keyframes veyraLoadSweep{0%{transform:translateX(-130%)}100%{transform:translateX(260%)}}
+@keyframes veyraLoaderPulse{0%,100%{transform:translateY(0) scale(1);filter:brightness(1)}50%{transform:translateY(-4px) scale(1.035);filter:brightness(1.22)}}
+@keyframes veyraLoaderExit{to{opacity:0;visibility:hidden}}
+.veyra-loader-emblem{animation:veyraLoaderPulse 2.4s ease-in-out infinite}
+#veyraLoader.veyra-loader-exit{animation:veyraLoaderExit .45s ease forwards;pointer-events:none}
+@media(prefers-reduced-motion:reduce){
+ #veyraLoader *{animation:none!important}
+ #veyraLoader.veyra-loader-exit{transition:opacity .2s ease}
+}
 
