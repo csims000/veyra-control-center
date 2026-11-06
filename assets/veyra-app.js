@@ -62,8 +62,8 @@ appsLibrary.recent=Array.isArray(appsLibrary.recent)?appsLibrary.recent:[];
 appsLibrary.custom=Array.isArray(appsLibrary.custom)?appsLibrary.custom:[];
 appsLibrary.categories=Array.isArray(appsLibrary.categories)?appsLibrary.categories:[];
 function appIdFromName(name){return String(name||'app').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,48)||'app'}
-function appRecords(){const builtins=apps.map(a=>({id:'builtin-'+appIdFromName(a[1]),icon:a[0],name:a[1],url:a[2],category:a[3],description:a[4],custom:false}));const custom=appsLibrary.custom.filter(a=>a&&typeof a.name==='string'&&typeof a.url==='string'&&/^https?:\\/\\//i.test(a.url)).map(a=>({...a,custom:true}));return [...builtins,...custom]}
-function appRecordLogo(a){try{const host=new URL(a.url).hostname.replace(/^www\\./,'');return '<img src="https://www.google.com/s2/favicons?domain='+encodeURIComponent(host)+'&sz=128" alt="" loading="lazy" referrerpolicy="no-referrer">'}catch{return esc(a.icon||'◇')}}
+function appRecords(){const builtins=apps.map(a=>({id:'builtin-'+appIdFromName(a[1]),icon:a[0],name:a[1],url:a[2],category:a[3],description:a[4],custom:false}));const custom=appsLibrary.custom.filter(a=>a&&typeof a.name==='string'&&typeof a.url==='string'&&(a.url.startsWith('https://')||a.url.startsWith('http://'))).map(a=>({...a,custom:true}));return [...builtins,...custom]}
+function appRecordLogo(a){try{let host=new URL(a.url).hostname;if(host.startsWith('www.'))host=host.slice(4);return '<img src="https://www.google.com/s2/favicons?domain='+encodeURIComponent(host)+'&sz=128" alt="" loading="lazy" referrerpolicy="no-referrer">'}catch{return esc(a.icon||'◇')}}
 function appsPage(){
  const records=appRecords(),groups=[...new Set([...apps.map(a=>a[3]),...appsLibrary.categories])];
  const categories=['All categories',...groups];
