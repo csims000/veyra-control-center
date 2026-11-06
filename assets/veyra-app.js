@@ -65,7 +65,7 @@ function appIdFromName(name){return String(name||'app').toLowerCase().replace(/[
 function appRecords(){const builtins=apps.map(a=>({id:'builtin-'+appIdFromName(a[1]),icon:a[0],name:a[1],url:a[2],category:a[3],description:a[4],custom:false}));const custom=appsLibrary.custom.filter(a=>a&&typeof a.name==='string'&&typeof a.url==='string'&&(a.url.startsWith('https://')||a.url.startsWith('http://'))).map(a=>({...a,custom:true}));return [...builtins,...custom]}
 function appRecordLogo(a){try{let host=new URL(a.url).hostname;if(host.startsWith('www.'))host=host.slice(4);return '<img src="https://www.google.com/s2/favicons?domain='+encodeURIComponent(host)+'&sz=128" alt="" loading="lazy" referrerpolicy="no-referrer">'}catch{return esc(a.icon||'◇')}}
 function appsPage(){
- const records=appRecords(),groups=[...new Set([...apps.map(a=>a[3]),...appsLibrary.categories])];
+ const records=appRecords(),groups=[...new Set([...apps.map(a=>a[3]),...appsLibrary.categories,...appsLibrary.custom.map(a=>a.category).filter(Boolean)])];
  const categories=['All categories',...groups];
  const categoryOptions=groups.map(g=>'<option value="'+esc(g)+'">'+esc(g)+'</option>').join('');
  const favoriteCount=records.filter(a=>appsLibrary.favorites.includes(a.id)).length;
