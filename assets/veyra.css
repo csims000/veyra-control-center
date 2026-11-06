@@ -794,3 +794,41 @@ body.light .search button{background:#fff;border-color:#c7d9ed}
 
 .month-day-count{display:block;width:100%;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#c8b4ff;font-size:9px;line-height:1.25;font-weight:650}.month-day{gap:5px}
 @media(max-width:420px){.month-day-count{display:block;font-size:7px}}
+
+
+/* VEYRA calendar upgrade: views, insights, categories, and upcoming agenda */
+.calendar-stats-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:0 0 14px}
+.calendar-stat{min-width:0;padding:14px 16px;border:1px solid var(--line);border-radius:13px;background:linear-gradient(145deg,var(--panel),var(--panel2));display:grid;gap:5px}
+.calendar-stat>span{font-size:9px;font-weight:800;letter-spacing:.12em;color:var(--muted)}
+.calendar-stat>b{font-size:25px;line-height:1.1;letter-spacing:-.04em;color:var(--text)}
+.calendar-stat>small{font-size:10px;color:var(--muted)}
+.calendar-view-switch{display:flex;align-items:center;padding:3px;border:1px solid var(--line);border-radius:10px;background:var(--panel2);gap:2px}
+.calendar-view-switch button{border:0;border-radius:7px;background:transparent;color:var(--muted);font:inherit;font-size:10px;font-weight:750;padding:8px 10px;cursor:pointer}
+.calendar-view-switch button.active{background:linear-gradient(120deg,#1766b7,#087fae);color:white;box-shadow:0 3px 12px #087dba35}
+.calendar-month-controls{flex-wrap:wrap}
+.calendar-month-controls .calendar-view-switch{margin-right:4px}
+.calendar-week-view{grid-auto-rows:minmax(135px,1fr)}
+.calendar-single-day{grid-template-columns:minmax(0,1fr);grid-auto-rows:minmax(180px,auto)}
+.calendar-single-day .month-day{min-height:180px;padding:18px}
+.calendar-single-day .month-day-number{font-size:19px}
+.calendar-single-day .month-day-count{font-size:13px}
+.calendar-extra-grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(220px,.7fr);gap:14px;align-items:stretch}
+.calendar-extra-grid>.panel{min-width:0;padding:17px}
+.calendar-upcoming-list{display:grid;gap:3px}
+.calendar-upcoming-item{display:flex;align-items:center;gap:11px;width:100%;padding:9px 4px;border:0;border-bottom:1px solid var(--line);background:transparent;color:var(--text);text-align:left;cursor:pointer}
+.calendar-upcoming-item:last-child{border-bottom:0}
+.calendar-upcoming-item:hover .calendar-upcoming-arrow{color:var(--cyan);transform:translateX(2px)}
+.calendar-upcoming-date{display:grid;justify-items:center;align-content:center;width:38px;height:42px;flex:0 0 38px;border:1px solid var(--line);border-radius:9px;background:var(--panel2)}
+.calendar-upcoming-date b{font-size:16px;line-height:1.1}
+.calendar-upcoming-date small{font-size:8px;color:var(--muted);text-transform:uppercase}
+.calendar-upcoming-copy{display:grid;gap:4px;min-width:0;flex:1}
+.calendar-upcoming-copy b{font-size:11px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.calendar-upcoming-copy small{font-size:9px;color:var(--muted)}
+.calendar-upcoming-arrow{color:var(--muted);transition:transform .16s}
+.calendar-category-list{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:8px 0}
+.calendar-category-list span{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:10px}
+.calendar-category-list i{width:8px;height:8px;border-radius:50%;box-shadow:0 0 9px currentColor}
+.month-day-dots .day-dot{width:7px;height:7px;flex:0 0 7px}
+@media(max-width:1050px){.calendar-month-controls{gap:5px}.calendar-view-switch button{padding:7px 8px}.calendar-extra-grid{grid-template-columns:1fr}}
+@media(max-width:760px){.calendar-stats-row{gap:7px}.calendar-stat{padding:11px}.calendar-stat>b{font-size:21px}.calendar-month-top{flex-wrap:wrap}.calendar-month-controls{width:100%;justify-content:flex-start}.calendar-week-view{grid-auto-rows:minmax(85px,1fr)}}
+@media(max-width:480px){.calendar-stats-row{grid-template-columns:1fr 1fr}.calendar-stat:last-child{grid-column:1/-1}.calendar-view-switch{order:-1}.calendar-month-controls .calendar-view-switch{margin-right:0}.calendar-category-list{grid-template-columns:1fr 1fr}}
