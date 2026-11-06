@@ -874,3 +874,13 @@ body.light .search button{background:#fff;border-color:#c7d9ed}
 .app-form-actions{grid-column:1/-1;display:flex;gap:8px;margin-top:4px}
 @media(max-width:760px){.apps-hero{align-items:flex-start;flex-direction:column}.apps-hero-stats{gap:25px}.apps-toolbar{align-items:stretch;flex-direction:column}.apps-toolbar>.btn{width:100%}.apps-category-select{margin-left:0}.app-create-form{grid-template-columns:1fr}.app-form-actions{grid-column:auto}}
 @media(prefers-reduced-motion:reduce){.app-card:hover{transform:none}}
+
+
+/* Apps Center custom logo editor */
+.app-create-form label{min-width:0}
+.app-create-form input[type="file"]{padding:9px;background:var(--panel2);border:1px dashed var(--line);border-radius:9px;color:var(--muted);font-size:10px}
+.app-create-form input[type="file"]::file-selector-button{margin-right:10px;padding:7px 10px;border:1px solid #28679a;border-radius:7px;background:#0d3155;color:#dff6ff;font:inherit;cursor:pointer}
+.app-tool-button{flex:0 0 29px}
+.app-library-card .app-icon img{width:100%;height:100%;object-fit:contain;border-radius:10px}
+.apps-results .app-category[style*="display: none"]{display:none!important}
+@media(max-width:760px){.app-create-form input[type="file"]{width:100%;box-sizing:border-box}}
