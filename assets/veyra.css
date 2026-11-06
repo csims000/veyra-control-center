@@ -254,7 +254,7 @@ body::before{z-index:0!important}
 #space-canvas{position:fixed!important;inset:0!important;z-index:1!important;pointer-events:none!important}
 .app{position:relative;z-index:2}
 #overlay,.toast{z-index:20}
-#authGate{position:relative;z-index:3}
+#authGate{position:fixed;inset:0;display:grid;place-items:center;padding:22px;overflow:auto;z-index:9999}
 body.light::before{background-image:linear-gradient(rgba(239,246,255,.42),rgba(239,246,255,.42)),var(--veyra-wallpaper,none)!important}
 
 /* Animated activity analytics */
