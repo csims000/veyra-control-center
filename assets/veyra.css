@@ -832,3 +832,45 @@ body.light .search button{background:#fff;border-color:#c7d9ed}
 @media(max-width:1050px){.calendar-month-controls{gap:5px}.calendar-view-switch button{padding:7px 8px}.calendar-extra-grid{grid-template-columns:1fr}}
 @media(max-width:760px){.calendar-stats-row{gap:7px}.calendar-stat{padding:11px}.calendar-stat>b{font-size:21px}.calendar-month-top{flex-wrap:wrap}.calendar-month-controls{width:100%;justify-content:flex-start}.calendar-week-view{grid-auto-rows:minmax(85px,1fr)}}
 @media(max-width:480px){.calendar-stats-row{grid-template-columns:1fr 1fr}.calendar-stat:last-child{grid-column:1/-1}.calendar-view-switch{order:-1}.calendar-month-controls .calendar-view-switch{margin-right:0}.calendar-category-list{grid-template-columns:1fr 1fr}}
+
+
+/* VEYRA Apps Center */
+.apps-hero{display:flex;align-items:center;justify-content:space-between;gap:25px;padding:clamp(20px,3vw,32px);margin:4px 0 18px;overflow:hidden;position:relative;background:radial-gradient(ellipse at 80% 0%,#167cc544,transparent 42%),linear-gradient(120deg,#071a34,#081326 72%);border-color:#1d5483}
+.apps-hero:after{content:"";position:absolute;width:220px;height:220px;right:18%;top:-145px;border:1px solid #58cfff33;border-radius:50%;box-shadow:0 0 0 22px #58cfff08,0 0 0 48px #58cfff06;pointer-events:none}
+.apps-hero>div:first-child{position:relative;z-index:1;max-width:540px}
+.apps-hero-kicker{font-size:9px;font-weight:850;letter-spacing:.2em;color:#73dcff}
+.apps-hero h2{font-size:clamp(25px,3vw,36px);line-height:1.08;letter-spacing:-.05em;margin:10px 0}
+.apps-hero h2 em{font-style:normal;color:#70dfff}
+.apps-hero p{font-size:11px;line-height:1.65;color:#9ab8d8;margin:0}
+.apps-hero-stats{display:flex;gap:22px;position:relative;z-index:1}
+.apps-hero-stats>div{display:grid;gap:5px;min-width:70px}
+.apps-hero-stats b{font-size:25px;color:#f1f9ff;letter-spacing:-.04em}
+.apps-hero-stats small{font-size:8px;letter-spacing:.12em;color:#80a8cb;font-weight:800}
+.apps-toolbar{display:flex;align-items:center;gap:12px;margin:0 0 12px}
+.apps-toolbar .app-search-wrap{flex:1;margin:0}
+.apps-toolbar>.btn{white-space:nowrap;min-height:42px}
+.apps-filter-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 18px}
+.apps-filter-tabs{display:flex;gap:5px;flex-wrap:wrap}
+.apps-filter{display:flex;align-items:center;gap:7px;padding:8px 11px;border:1px solid var(--line);border-radius:9px;background:var(--panel);color:var(--muted);font:inherit;font-size:10px;font-weight:750;cursor:pointer}
+.apps-filter span{padding:2px 5px;border-radius:5px;background:#17385a;color:#a9d8fa;font-size:9px}
+.apps-filter.active{border-color:#278ad3;background:linear-gradient(120deg,#124c83,#0a3157);color:white}
+.apps-category-select{display:flex;align-items:center;gap:7px;margin-left:auto;color:var(--muted);font-size:10px}
+.apps-category-select .field{min-width:140px;min-height:34px;padding:6px 9px}
+.apps-add-category{min-height:34px;padding:6px 10px;font-size:10px}
+.app-library-card{position:relative;padding:0;overflow:hidden;display:flex;align-items:stretch;min-height:104px}
+.app-card-main{display:flex;align-items:center;gap:13px;flex:1;min-width:0;padding:15px;text-decoration:none;color:var(--text)}
+.app-card-main .app-icon{flex:0 0 43px}
+.app-card-copy em{font-style:normal;color:var(--cyan);font-size:8px;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+.app-card-tools{display:flex;align-items:flex-start;gap:3px;padding:10px 9px 0 0}
+.app-favorite,.app-tool-button{width:29px;height:29px;border:1px solid transparent;border-radius:8px;background:#0a2038;color:#8eb5d8;font-size:16px;cursor:pointer}
+.app-favorite.is-favorite{color:#ffd36d;border-color:#80612b;background:#332817}
+.app-tool-button:hover,.app-favorite:hover{border-color:#398bc8;color:#fff}
+.app-tool-danger:hover{color:#ff9e9e;border-color:#9b4d58}
+.apps-custom-form{padding:19px!important;margin:0 0 18px;border-color:#2875ad}
+.apps-custom-form[hidden]{display:none}
+.app-create-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.app-create-form label{display:grid;gap:6px;color:var(--muted);font-size:10px;font-weight:750}
+.app-create-form .field{width:100%;min-width:0;box-sizing:border-box}
+.app-form-actions{grid-column:1/-1;display:flex;gap:8px;margin-top:4px}
+@media(max-width:760px){.apps-hero{align-items:flex-start;flex-direction:column}.apps-hero-stats{gap:25px}.apps-toolbar{align-items:stretch;flex-direction:column}.apps-toolbar>.btn{width:100%}.apps-category-select{margin-left:0}.app-create-form{grid-template-columns:1fr}.app-form-actions{grid-column:auto}}
+@media(prefers-reduced-motion:reduce){.app-card:hover{transform:none}}
