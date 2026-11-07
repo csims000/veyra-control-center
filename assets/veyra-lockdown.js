@@ -56,7 +56,7 @@
   const ensureConfig = () => { config = readConfig(); };
 
   const doorSvg = '<div class="vault-halo" aria-hidden="true"></div><div class="vault-door" aria-hidden="true"><span class="vault-bolt b1"></span><span class="vault-bolt b2"></span><span class="vault-bolt b3"></span><span class="vault-bolt b4"></span><span class="vault-wheel"></span><span class="vault-door-label">VEYRA SECURE ACCESS</span></div>';
-  const makeOverlay = () => {
+  const makeOverlay = (initialMode = 'unlock') => {
     if (overlay) return;
     overlay = document.createElement('section');
     overlay.className = 'vault-overlay is-closing';
@@ -77,7 +77,7 @@
     });
     overlay.querySelector('#vaultChange').addEventListener('click', () => startChange());
     requestAnimationFrame(() => overlay.classList.add('visible'));
-    setTimeout(() => showAccess('unlock'), 1450);
+    setTimeout(() => showAccess(initialMode), 1450);
   };
   const setCopy = (status,title,subtitle) => {
     overlay.querySelector('#vaultStatus').textContent = status;
@@ -197,9 +197,7 @@
     panel.querySelector('#vaultSettingsStatus').textContent=statusText() + ' · Each account has its own PIN.';
     panel.querySelector('#vaultSettingsChange').addEventListener('click',() => {
       ensureConfig();
-      makeOverlay();
-      overlay.classList.remove('is-closing');
-      showAccess('change-current');
+      makeOverlay('change-current');
     });
   };
   if (typeof render === 'function') {
