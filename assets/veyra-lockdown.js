@@ -29,6 +29,7 @@
       const key = 'veyra-' + (accountScope() === 'legacy' ? 'legacy-' : 'user-' + accountScope() + '-') + 'vaultSettings';
       localStorage.setItem(key, JSON.stringify(value));
       if (typeof save === 'function') save('vaultSettings', value);
+      if (typeof updateStatus === 'function') updateStatus();
       return true;
     } catch { return false; }
   };
@@ -210,5 +211,6 @@
     const el=document.getElementById('vaultSettingsStatus');
     if (el) el.textContent=statusText() + ' · Each account has its own PIN.';
   };
+  updateStatus();
   window.addEventListener('storage',e=>{ if (e.key && e.key.endsWith('vaultSettings')) { ensureConfig(); updateStatus(); }});
 })();
