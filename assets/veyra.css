@@ -1356,3 +1356,8 @@ body.light .search button{background:#fff;border-color:#c7d9ed}
 .vault-bolt.b6{top:22%;right:21%;transform:rotate(-45deg)}
 .vault-bolt.b7{bottom:22%;left:21%;transform:rotate(-45deg)}
 .vault-bolt.b8{bottom:22%;right:21%;transform:rotate(45deg)}
+
+
+/* Keep the live clock in the Home dashboard's Local Time widget.
+   Remove the duplicate topbar clock so it cannot collide with Lock Down or profile controls. */
+.top-right > .datebox{display:none!important}
