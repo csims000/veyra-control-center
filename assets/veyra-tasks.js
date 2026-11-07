@@ -41,6 +41,7 @@ wire = function(){
  if(form)form.onsubmit=async e=>{
   e.preventDefault();
   const reminder=$('#vtReminder').checked;
+  if(reminder&&!$('#vtDate').value){toast('Choose a due date to set a reminder.');return;}
   if(reminder&&'Notification'in window&&Notification.permission==='default'){
    const permission=await Notification.requestPermission();
    if(permission!=='granted')toast('Notifications were not enabled; the task will still be saved.');
@@ -80,3 +81,5 @@ function veyraCheckTaskReminders(){
  if(changed)save('tasks',tasks);
 }
 setInterval(veyraCheckTaskReminders,30000);
+
+if(current==='tasks')render();
