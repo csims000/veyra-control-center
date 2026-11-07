@@ -21,13 +21,14 @@ jobs:
         run: |
           node --check assets/veyra-auth.js
           node --check assets/veyra-app.js
+          node --check assets/veyra-tasks.js
           node --check assets/veyra-effects.js
       - name: Check app shell references
         run: |
           node --input-type=module <<'NODE'
           import { readFileSync, existsSync } from 'node:fs';
           const html = readFileSync('index.html', 'utf8');
-          const required = ['assets/veyra.css', 'assets/veyra-auth.js', 'assets/veyra-app.js', 'assets/veyra-effects.js'];
+          const required = ['assets/veyra.css', 'assets/veyra-auth.js', 'assets/veyra-app.js', 'assets/veyra-tasks.js', 'assets/veyra-effects.js'];
           for (const path of required) {
             if (!html.includes(path) || !existsSync(path)) throw new Error('Missing asset reference: ' + path);
           }
