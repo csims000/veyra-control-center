@@ -56,7 +56,7 @@
   const statusText = () => config ? 'Personal PIN enabled' : 'Default PIN active · change recommended';
   const ensureConfig = () => { config = readConfig(); };
 
-  const doorSvg = '<div class="vault-halo" aria-hidden="true"></div><div class="vault-door" aria-hidden="true"><span class="vault-bolt b1"></span><span class="vault-bolt b2"></span><span class="vault-bolt b3"></span><span class="vault-bolt b4"></span><span class="vault-wheel"></span><span class="vault-door-label">VEYRA SECURE ACCESS</span></div>';
+  const doorSvg = '<div class="vault-halo" aria-hidden="true"></div><div class="vault-door" aria-hidden="true"><span class="vault-bolt b1"></span><span class="vault-bolt b2"></span><span class="vault-bolt b3"></span><span class="vault-bolt b4"></span><span class="vault-bolt b5"></span><span class="vault-bolt b6"></span><span class="vault-bolt b7"></span><span class="vault-bolt b8"></span><span class="vault-wheel"></span><span class="vault-door-label">VEYRA SECURE ACCESS</span></div>';
   const makeOverlay = (initialMode = 'unlock') => {
     if (overlay) return;
     overlay = document.createElement('section');
