@@ -114,6 +114,7 @@
     el.className = 'vault-message' + (isError?' error':'');
   };
   const openVault = () => {
+    if (typeof go === 'function') go('home');
     overlay.classList.add('is-opening');
     overlay.classList.remove('is-closing');
     setCopy('ACCESS GRANTED','WELCOME BACK','Vault unlocked. Restoring your workspace…');
