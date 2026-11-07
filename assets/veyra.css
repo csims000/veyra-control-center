@@ -1604,3 +1604,129 @@ body.light .search button{background:#fff;border-color:#c7d9ed}
  .home-command .home-panel{padding:14px}
  .home-command .home-launch-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
 }
+
+
+/* VEYRA visual identity pass — richer hero artwork and sharper app icon tiles */
+.home-command>.home-hero{
+  background:
+    radial-gradient(ellipse at 77% 48%,rgba(38,151,255,.24),transparent 32%),
+    radial-gradient(ellipse at 90% 8%,rgba(38,92,185,.2),transparent 42%),
+    linear-gradient(125deg,#061326 0%,#0a2342 52%,#07162a 100%);
+  border-color:#246092;
+}
+.home-command .home-hero-art{
+  width:min(49%,510px);
+  right:0;
+  opacity:1;
+  filter:drop-shadow(0 16px 28px rgba(0,0,0,.38));
+}
+.home-command .home-planet{
+  width:clamp(190px,22vw,285px);
+  height:clamp(190px,22vw,285px);
+  border-radius:50%;
+  position:absolute;
+  right:12%;
+  top:50%;
+  transform:translateY(-50%);
+  background:
+    radial-gradient(circle at 31% 25%,rgba(180,229,255,.95) 0 1%,transparent 2%),
+    radial-gradient(ellipse at 34% 27%,#6fd5ff 0%,#267bc4 22%,#174b91 48%,#0a2550 72%,#06162e 100%);
+  box-shadow:inset -25px -12px 45px #020b1f, inset 12px 8px 30px #9ce8ff55,0 0 55px #168fff55,0 0 110px #1477d933;
+}
+.home-command .home-planet:before{
+  content:"";position:absolute;inset:9% -8%;
+  border:2px solid rgba(115,213,255,.5);
+  border-radius:50%;
+  transform:rotate(-23deg) scaleY(.28);
+  box-shadow:0 0 15px #38bfff55;
+}
+.home-command .home-planet:after{
+  content:"";position:absolute;inset:0;border-radius:50%;
+  background:
+    radial-gradient(ellipse at 23% 55%,transparent 0 25%,rgba(4,17,42,.34) 48%,transparent 72%),
+    repeating-linear-gradient(165deg,transparent 0 17px,rgba(132,218,255,.08) 18px 19px,transparent 20px 31px);
+  mix-blend-mode:screen;
+}
+.home-command .home-moon{
+  width:48px;height:48px;right:4%;top:19%;
+  border-radius:50%;
+  background:radial-gradient(circle at 30% 28%,#e7f8ff,#6e9fcb 52%,#203b66 100%);
+  box-shadow:0 0 30px #7dcaff55;
+}
+.home-command .home-horizon{
+  position:absolute;right:-12%;bottom:3%;width:75%;height:30%;
+  border-radius:50%;
+  border-top:2px solid #58caffaa;
+  box-shadow:0 -8px 30px #178fff55,0 -22px 70px #1475ce22;
+  transform:rotate(-9deg);
+}
+.home-command .home-starfield{
+  position:absolute;inset:0;
+  background-image:
+    radial-gradient(2px 2px at 18% 20%,#d8f5ff 50%,transparent 100%),
+    radial-gradient(1px 1px at 39% 76%,#9edfff 50%,transparent 100%),
+    radial-gradient(2px 2px at 82% 17%,#eafaff 50%,transparent 100%),
+    radial-gradient(1px 1px at 69% 78%,#8bd9ff 50%,transparent 100%),
+    radial-gradient(1px 1px at 91% 56%,#fff 50%,transparent 100%),
+    radial-gradient(1px 1px at 51% 13%,#b5eaff 50%,transparent 100%);
+  opacity:.8;
+}
+.home-command .home-launch-app{
+  position:relative;
+  isolation:isolate;
+  border-color:rgba(70,143,197,.32);
+  background:linear-gradient(145deg,rgba(18,53,86,.86),rgba(6,21,39,.9));
+}
+.home-command .home-launch-icon{
+  width:48px;height:48px;
+  display:grid;place-items:center;
+  border-radius:15px;
+  border:1px solid rgba(117,196,255,.4);
+  background:linear-gradient(145deg,#1b4e79,#0a1d36);
+  box-shadow:inset 0 1px 2px #ffffff22,0 7px 15px #0005,0 0 18px #168fff18;
+  color:#e5f6ff;
+  font-size:19px;
+  overflow:hidden;
+}
+.home-command .home-launch-icon img{
+  width:100%;height:100%;object-fit:contain;
+  padding:7px;
+  border-radius:13px;
+  background:linear-gradient(145deg,#f7fbff,#dceafa);
+  filter:saturate(1.12) contrast(1.04);
+}
+.home-command .home-launch-app>b{
+  font-size:10px;font-weight:800;letter-spacing:.01em;color:#e4f2ff;
+}
+.home-command .home-launch-app>small{
+  color:#69bff3;font-size:8px;font-weight:850;letter-spacing:.13em;
+}
+.home-command .home-launch-app:hover .home-launch-icon{
+  border-color:#81d9ff;
+  box-shadow:0 0 0 3px #2b9de822,0 0 24px #229fff55;
+}
+.home-command .home-stat-card>i{
+  display:grid;place-items:center;
+  width:39px;height:39px;
+  border-radius:13px;
+  border:1px solid #367db1;
+  background:linear-gradient(145deg,#174a74,#0a203a);
+  box-shadow:inset 0 1px #ffffff20,0 6px 13px #0004;
+  font-size:19px;
+}
+.home-command .home-stat-card.stat-cyan>i{border-color:#2b9db5;background:linear-gradient(145deg,#126078,#0a293d)}
+.home-command .home-stat-card.stat-purple>i{border-color:#7466bd;background:linear-gradient(145deg,#51418e,#211f4c)}
+.home-command .home-stat-card.stat-green>i{border-color:#318f7d;background:linear-gradient(145deg,#176c5c,#0b302f)}
+.home-command .home-panel-head .home-label{
+  color:#72caff;font-size:8px;letter-spacing:.19em;font-weight:900;
+}
+.home-command .home-calendar-panel .home-cal-day.is-today{
+  box-shadow:0 0 0 2px #39b9ff33,0 0 20px #168fff44;
+}
+@media(max-width:760px){
+ .home-command .home-hero-art{width:68%;opacity:.72}
+ .home-command .home-planet{width:190px;height:190px;right:3%}
+}
+@media(prefers-reduced-motion:reduce){
+ .home-command .home-launch-app,.home-command .home-launch-icon{transition:none}
+}
