@@ -1463,3 +1463,144 @@ body.light .search button{background:#fff;border-color:#c7d9ed}
  .home-stat-card,.home-launch-app{transition:none}
  .home-stat-card:hover,.home-launch-app:hover{transform:none}
 }
+
+
+/* VEYRA HOME — new split command-deck composition */
+.home-command{
+  display:grid!important;
+  grid-template-columns:minmax(0,1.62fr) minmax(250px,.78fr);
+  grid-template-areas:
+    "kicker kicker"
+    "hero widgets"
+    "stats stats"
+    "content content";
+  gap:14px!important;
+  max-width:1680px;
+  margin:0 auto;
+  padding:4px 0 28px;
+}
+.home-command>.home-kicker{grid-area:kicker}
+.home-command>.home-hero{
+  grid-area:hero;
+  min-height:310px;
+  height:100%;
+  display:flex;
+  align-items:center;
+  padding:34px 34px 48px;
+  border-radius:21px;
+  background:
+    radial-gradient(ellipse at 80% 40%,rgba(39,143,235,.3),transparent 42%),
+    linear-gradient(125deg,#07172d 0%,#0c2b50 58%,#07182e 100%);
+}
+.home-command>.home-hero .home-hero-copy{position:relative;z-index:2;max-width:590px}
+.home-command>.home-hero .home-hero-copy h1{font-size:clamp(37px,3.3vw,53px);line-height:1.02;letter-spacing:-.045em}
+.home-command>.home-hero .home-hero-copy p{max-width:450px;line-height:1.75}
+.home-command>.home-hero .home-hero-art{width:48%;right:-2%;opacity:.92}
+.home-command>.home-top-widgets{
+  grid-area:widgets;
+  grid-template-columns:minmax(0,1fr);
+  grid-template-rows:1fr 1fr;
+  align-self:stretch;
+  gap:14px;
+}
+.home-command>.home-top-widgets>.home-widget{
+  min-height:0;
+  padding:21px 22px;
+  border-radius:17px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  background:
+    radial-gradient(ellipse at 95% 5%,rgba(32,139,225,.16),transparent 55%),
+    linear-gradient(145deg,#0c2340,#071629);
+  border:1px solid #20517d;
+  box-shadow:inset 0 1px rgba(255,255,255,.07),0 12px 28px rgba(0,0,0,.2);
+}
+.home-command>.home-top-widgets .home-clock-widget>strong{font-size:clamp(30px,3vw,42px);margin:12px 0 5px}
+.home-command>.home-top-widgets .home-weather-content{margin:13px 0 8px}
+.home-command>.home-stat-grid{
+  grid-area:stats;
+  gap:13px;
+}
+.home-command>.home-stat-grid>.home-stat-card{
+  min-height:112px;
+  position:relative;
+  overflow:hidden;
+  text-align:left;
+  padding:18px 20px;
+  border-radius:17px;
+  border:1px solid #1d4c76;
+  background:linear-gradient(145deg,#102d4c 0%,#09192d 75%);
+  box-shadow:inset 0 1px rgba(255,255,255,.07),0 12px 26px rgba(0,0,0,.2);
+}
+.home-command>.home-stat-grid>.home-stat-card:after{
+  content:"";
+  position:absolute;
+  width:115px;height:115px;right:-35px;top:-48px;
+  border:1px solid rgba(101,195,255,.16);
+  border-radius:50%;
+  box-shadow:0 0 0 13px rgba(66,160,231,.035),0 0 0 27px rgba(66,160,231,.025);
+  pointer-events:none;
+}
+.home-command>.home-stat-grid>.home-stat-card>span{font-size:9px;letter-spacing:.16em;color:#8db9df;font-weight:850}
+.home-command>.home-stat-grid>.home-stat-card>strong{display:block;font-size:36px;line-height:1.05;margin:8px 0 3px;color:#f1f8ff}
+.home-command>.home-stat-grid>.home-stat-card>small{font-size:10px;color:#89a9ca}
+.home-command>.home-stat-grid>.home-stat-card>i{position:absolute;right:20px;bottom:20px;font-size:22px;color:#56c9ff;font-style:normal}
+.home-command>.home-stat-grid>.stat-cyan{background:linear-gradient(145deg,#0a354b,#081b2c);border-color:#17657b}
+.home-command>.home-stat-grid>.stat-purple{background:linear-gradient(145deg,#28234c,#101a34);border-color:#51458c}
+.home-command>.home-stat-grid>.stat-green{background:linear-gradient(145deg,#0c3a3a,#091e30);border-color:#20675f}
+.home-command>.home-content-grid{
+  grid-area:content;
+  grid-template-columns:minmax(0,1.7fr) minmax(300px,.82fr);
+  gap:15px;
+}
+.home-command .home-main-column,.home-command .home-side-column{gap:15px}
+.home-command .home-panel{
+  border-radius:18px;
+  padding:19px 20px;
+  border:1px solid #1b466f;
+  background:linear-gradient(145deg,rgba(10,30,52,.98),rgba(5,17,32,.99));
+  box-shadow:inset 0 1px rgba(255,255,255,.055),0 13px 28px rgba(0,0,0,.18);
+}
+.home-command .home-panel-head{margin-bottom:17px}
+.home-command .home-panel-head h2{font-size:16px}
+.home-command .home-panel-head p{font-size:10px}
+.home-command .home-launch-grid{gap:10px}
+.home-command .home-launch-app{
+  min-height:105px;
+  padding:13px 7px 10px;
+  border:1px solid #173e63;
+  border-radius:14px;
+  background:linear-gradient(180deg,rgba(17,53,86,.72),rgba(7,24,43,.62));
+}
+.home-command .home-launch-app:hover{transform:translateY(-3px);border-color:#43b7f2;background:linear-gradient(180deg,#164d79,#0a2745)}
+.home-command .home-launch-icon{width:43px;height:43px;border-radius:13px}
+.home-command .home-upcoming-row{padding:15px 9px;border-bottom:1px solid rgba(61,110,153,.18)}
+.home-command .home-calendar-panel .home-calendar-grid{gap:6px}
+.home-command .home-calendar-panel .home-cal-day{border-radius:10px;font-size:10px}
+.home-command .home-progress-panel .home-progress-ring{margin:14px auto 18px}
+.home-command .home-news-item{padding:13px 0;border-bottom:1px solid rgba(61,110,153,.2)}
+.home-command .home-news-item>b{font-size:11px;line-height:1.5}
+.home-command .home-recent-panel{padding:19px;border-radius:18px;border:1px solid #1b466f;background:linear-gradient(120deg,#0c2744,#07182d)}
+@media(max-width:1050px){
+ .home-command{grid-template-columns:minmax(0,1.3fr) minmax(220px,.8fr)}
+ .home-command>.home-hero{min-height:280px;padding:25px}
+ .home-command>.home-content-grid{grid-template-columns:minmax(0,1.35fr) minmax(260px,.85fr)}
+}
+@media(max-width:760px){
+ .home-command{
+  grid-template-columns:minmax(0,1fr);
+  grid-template-areas:"kicker" "hero" "widgets" "stats" "content";
+ }
+ .home-command>.home-top-widgets{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:auto}
+ .home-command>.home-top-widgets>.home-widget{min-height:120px;padding:15px}
+ .home-command>.home-content-grid{grid-template-columns:minmax(0,1fr)}
+}
+@media(max-width:540px){
+ .home-command>.home-top-widgets{grid-template-columns:minmax(0,1fr)}
+ .home-command>.home-stat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .home-command>.home-hero{min-height:260px;padding:22px 18px 46px}
+ .home-command>.home-hero .home-hero-copy h1{font-size:34px}
+ .home-command .home-panel{padding:14px}
+ .home-command .home-launch-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
