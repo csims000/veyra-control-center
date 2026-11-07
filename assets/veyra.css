@@ -1361,3 +1361,105 @@ body.light .search button{background:#fff;border-color:#c7d9ed}
 /* Keep the live clock in the Home dashboard's Local Time widget.
    Remove the duplicate topbar clock so it cannot collide with Lock Down or profile controls. */
 .top-right > .datebox{display:none!important}
+
+
+/* VEYRA Home — refined command-center layout */
+.home-command{
+  width:100%;max-width:1680px;margin-inline:auto;
+  gap:14px;padding:2px 0 24px;
+}
+.home-kicker{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 2px 1px}
+.home-hero{
+  min-height:268px;padding:32px 34px 46px;border-radius:20px;
+  background:
+    radial-gradient(ellipse at 76% 45%,#1b76c855 0,transparent 38%),
+    linear-gradient(112deg,#07172c 0%,#0b2547 53%,#07162c 100%);
+  box-shadow:inset 0 1px #b9e6ff18,0 18px 40px #0005;
+}
+.home-hero-copy{max-width:610px}
+.home-hero h1{font-size:clamp(36px,3.8vw,54px);line-height:1.02;margin:13px 0}
+.home-hero-copy p{font-size:12px;max-width:480px;line-height:1.75}
+.home-hero-art{width:48%;opacity:.95}
+.home-hero-bottom{bottom:17px}
+.home-top-widgets{grid-template-columns:minmax(220px,.72fr) minmax(0,1.28fr);gap:14px}
+.home-widget{
+  min-height:112px;padding:16px 19px;border-radius:15px;
+  border:1px solid #1b4a76;
+  background:linear-gradient(135deg,#0b1e35 0%,#07162a 100%);
+  box-shadow:inset 0 1px #ffffff0a,0 9px 22px #0003;
+}
+.home-clock-widget{display:flex;flex-direction:column;justify-content:center}
+.home-clock-widget>strong{font-size:30px;letter-spacing:-.045em;margin:7px 0 3px}
+.home-weather-widget{display:flex;flex-direction:column;justify-content:center}
+.home-weather-content{min-height:35px}
+.home-weather-content strong{font-size:13px}
+.home-weather-actions{margin-top:8px;display:flex;gap:18px}
+.home-stat-grid{gap:13px}
+.home-stat-card{
+  min-height:100px;padding:15px 17px;border-radius:15px;
+  background:linear-gradient(145deg,#0d2743 0%,#07172b 100%);
+  box-shadow:inset 0 1px #ffffff0b,0 8px 20px #0003;
+  transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease;
+}
+.home-stat-card:hover{transform:translateY(-3px);border-color:#328bc5;box-shadow:0 12px 25px #001b3c88}
+.home-stat-card>strong{font-size:31px;line-height:1.05;margin:5px 0 2px}
+.home-content-grid{grid-template-columns:minmax(0,1.58fr) minmax(310px,.92fr);gap:15px}
+.home-main-column,.home-side-column{display:grid;gap:15px;min-width:0}
+.home-side-column{align-content:start}
+.home-panel{
+  padding:17px 18px;border-radius:16px;
+  background:linear-gradient(145deg,#0a1c32f5 0%,#061326fa 100%);
+  border:1px solid #1a4169;
+  box-shadow:inset 0 1px #ffffff0a,0 10px 25px #0003;
+}
+.home-panel-head{margin-bottom:14px;align-items:center}
+.home-panel-head h2{font-size:15px}
+.home-panel-head p{font-size:9px}
+.home-launch-grid{grid-template-columns:repeat(5,minmax(0,1fr));gap:12px 9px}
+.home-launch-app{
+  min-height:94px;padding:10px 5px;border-radius:12px;
+  background:linear-gradient(180deg,#0c2744aa,#08182c66);
+  border:1px solid #183c60;
+  transition:transform .18s ease,border-color .18s ease,background .18s ease;
+}
+.home-launch-app:hover{transform:translateY(-3px);border-color:#319de1;background:#10345a}
+.home-launch-icon{width:39px;height:39px;border-radius:11px}
+.home-launch-app b{font-size:10px;margin-top:7px}
+.home-upcoming-row{padding:13px 5px;gap:12px}
+.home-upcoming-row:hover{background:#0b2948;border-radius:10px}
+.home-calendar-panel .home-calendar-grid{gap:7px}
+.home-calendar-panel .home-cal-day{min-height:35px;border-radius:9px}
+.home-progress-panel .home-progress-ring{margin:9px auto 14px}
+.home-news-panel{min-height:200px}
+.home-activity-chart{min-height:132px}
+.home-recent-panel{padding:15px 17px;border-radius:14px;background:linear-gradient(120deg,#0b2340,#08172a);border:1px solid #173d62}
+@media(max-width:1150px){
+ .home-content-grid{grid-template-columns:minmax(0,1.25fr) minmax(275px,.9fr)}
+ .home-launch-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+ .home-hero-art{width:44%;opacity:.75}
+}
+@media(max-width:850px){
+ .home-content-grid{grid-template-columns:1fr}
+ .home-side-column{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .home-side-column>.home-news-panel,.home-side-column>.home-recent-panel{grid-column:1/-1}
+}
+@media(max-width:600px){
+ .home-command{gap:10px}
+ .home-hero{min-height:250px;padding:23px 19px 43px}
+ .home-hero h1{font-size:34px}
+ .home-hero-art{width:65%;opacity:.38}
+ .home-top-widgets{grid-template-columns:1fr}
+ .home-stat-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+ .home-content-grid{gap:10px}
+ .home-main-column,.home-side-column{gap:10px}
+ .home-side-column{grid-template-columns:1fr}
+ .home-side-column>.home-news-panel,.home-side-column>.home-recent-panel{grid-column:auto}
+ .home-launch-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+ .home-panel{padding:13px}
+ .home-panel-head{align-items:flex-start}
+ .home-panel-head h2{font-size:13px}
+}
+@media(prefers-reduced-motion:reduce){
+ .home-stat-card,.home-launch-app{transition:none}
+ .home-stat-card:hover,.home-launch-app:hover{transform:none}
+}
