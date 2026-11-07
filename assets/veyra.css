@@ -1263,3 +1263,33 @@ body.light .search button{background:#fff;border-color:#c7d9ed}
 .vault-settings-panel button:hover{border-color:#58ceff;box-shadow:0 0 16px #168fff30}
 @media(max-width:700px){.top-action-lockdown b{display:none}.top-action-lockdown{width:39px;justify-content:center}.vault-scene{width:min(84vw,360px)}.vault-settings-panel{align-items:flex-start;flex-direction:column}}
 @media(prefers-reduced-motion:reduce){.vault-overlay,.vault-door,.vault-bolt{animation:none!important;transition:none!important}}
+
+
+/* Lock Down viewport fit: center the complete vault and keypad */
+.vault-overlay{box-sizing:border-box;min-height:100dvh;padding:10px 12px;overflow-y:auto;place-items:center}
+.vault-shell{box-sizing:border-box;width:min(94vw,680px);max-height:100%;gap:clamp(7px,1.25vh,13px);padding:clamp(8px,1.5vh,14px) 16px;margin:auto}
+.vault-brand{font-size:10px;letter-spacing:.34em}
+.vault-scene{width:min(34vh, min(38vw, 350px));max-width:100%;flex:none}
+.vault-status{font-size:9px}
+.vault-title{font-size:clamp(21px,3.2vh,30px);line-height:1.12}
+.vault-subtitle{font-size:11px;line-height:1.4}
+.vault-access{gap:7px}
+.vault-dots{gap:11px;padding:3px 0}
+.vault-dot{width:10px;height:10px}
+.vault-keypad{gap:6px}
+.vault-key{min-height:clamp(38px,5.2vh,46px);border-radius:9px}
+.vault-message{min-height:15px;font-size:10px}
+.vault-change-btn{padding:3px 6px}
+@media(max-height:760px){
+ .vault-overlay{padding:6px}
+ .vault-shell{gap:6px;padding:5px 12px}
+ .vault-scene{width:min(29vh, min(34vw, 270px))}
+ .vault-key{min-height:36px}
+ .vault-subtitle{font-size:10px}
+}
+@media(max-width:700px){
+ .vault-scene{width:min(34vh, 72vw, 300px)}
+ .vault-shell{width:100%;gap:9px;padding:10px 8px}
+ .vault-key{min-height:43px}
+}
+@media(prefers-reduced-motion:reduce){.vault-overlay{scroll-behavior:auto}}
