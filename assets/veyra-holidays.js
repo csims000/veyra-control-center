@@ -16,7 +16,10 @@
   ];
   const root = document.documentElement;
   let active = '';
-  const base = Object.fromEntries(['bg','panel','panel2','line','blue','cyan','purple','good'].map(k => [k, getComputedStyle(root).getPropertyValue('--'+k).trim()]));
+  const initialStyle = getComputedStyle(root);
+  const base = Object.fromEntries(['bg','panel','panel2','line','blue','cyan','purple','good'].map(k => [k, initialStyle.getPropertyValue('--'+k).trim()]));
+  const baseWallpaper = initialStyle.getPropertyValue('--veyra-wallpaper').trim();
+  const baseOverlay = initialStyle.getPropertyValue('--wallpaper-overlay').trim();
   function apply() {
     const enabled = typeof settings !== 'undefined' && !!settings.holidaySpecial;
     if (!enabled) {
@@ -26,6 +29,8 @@
       delete root.dataset.holiday;
       ['bg','panel','panel2','line','blue','cyan','purple','good'].forEach(k => root.style.setProperty('--'+k, base[k]));
       root.style.removeProperty('--holiday-glow');
+      if (baseWallpaper) root.style.setProperty('--veyra-wallpaper', baseWallpaper); else root.style.removeProperty('--veyra-wallpaper');
+      if (baseOverlay) root.style.setProperty('--wallpaper-overlay', baseOverlay); else root.style.removeProperty('--wallpaper-overlay');
       document.getElementById('holidayRibbon')?.remove();
       document.querySelector('meta[name="theme-color"]')?.setAttribute('content', base.bg);
       return;
@@ -38,6 +43,13 @@
     root.dataset.holiday = t.id;
     ['bg','panel','panel2','line','blue','cyan','purple','good'].forEach((k,i) => root.style.setProperty('--'+k, t.colors[i]));
     root.style.setProperty('--holiday-glow', t.glow);
+    if (t.id === 'thanksgiving' && window.VEYRA_THANKSGIVING_BACKGROUND) {
+      root.style.setProperty('--veyra-wallpaper', 'url("' + window.VEYRA_THANKSGIVING_BACKGROUND + '")');
+      root.style.setProperty('--wallpaper-overlay', '0.20');
+    } else {
+      if (baseWallpaper) root.style.setProperty('--veyra-wallpaper', baseWallpaper); else root.style.removeProperty('--veyra-wallpaper');
+      if (baseOverlay) root.style.setProperty('--wallpaper-overlay', baseOverlay); else root.style.removeProperty('--wallpaper-overlay');
+    }
     let ribbon = document.getElementById('holidayRibbon');
     if (!ribbon) {
       ribbon = document.createElement('div');
