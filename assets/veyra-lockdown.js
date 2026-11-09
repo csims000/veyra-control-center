@@ -31,7 +31,7 @@
       writeAttempts();
       setMessage('Three incorrect PIN attempts. Signing out of this device…', true);
       try {
-        if (window.veyraAuthClient?.auth) await window.veyraAuthClient.auth.signOut({ scope: 'local' });
+        if (typeof veyraAuthClient !== 'undefined' && veyraAuthClient?.auth) await veyraAuthClient.auth.signOut({ scope: 'local' });
         else setMessage('Three incorrect attempts. Sign out and sign back in to continue.', true);
       } catch {
         setMessage('Three incorrect attempts. Your local sign-out was requested; reload and sign in again.', true);
