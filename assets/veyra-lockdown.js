@@ -53,7 +53,7 @@
     });
     overlay.addEventListener('keydown', e => {
       if (e.key === 'Escape') e.preventDefault();
-      if (/^\\d$/.test(e.key) && !e.target.matches('input')) pressKey(e.key);
+      if (/^\d$/.test(e.key) && !e.target.matches('input')) pressKey(e.key);
       else if (e.key === 'Backspace' && !e.target.matches('input')) pressKey('back');
       else if (e.key === 'Enter' && !e.target.matches('input')) pressKey('enter');
     });
@@ -164,7 +164,7 @@
       finally { busy = false; }
       return;
     }
-    if (!/^\\d$/.test(key) || pin.length >= PIN_LENGTH) return;
+    if (!/^\d$/.test(key) || pin.length >= PIN_LENGTH) return;
     pin += key;
     renderKeypad();
     if (pin.length === PIN_LENGTH) setMessage('Press ENTER to continue.');
