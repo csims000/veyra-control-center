@@ -1730,3 +1730,23 @@ body.light .search button{background:#fff;border-color:#c7d9ed}
 @media(prefers-reduced-motion:reduce){
  .home-command .home-launch-app,.home-command .home-launch-icon{transition:none}
 }
+
+
+/* Server-backed VEYRA Lock Down password verification and audit history */
+.vault-reauth{width:100%;display:grid;gap:9px;justify-items:stretch;padding-top:4px}
+.vault-reauth[hidden]{display:none}
+.vault-reauth label{font-size:10px;letter-spacing:.08em;color:#9bc8e8;text-transform:uppercase}
+.vault-reauth input{box-sizing:border-box;width:100%;min-height:45px;border:1px solid #27628d;border-radius:10px;padding:0 13px;background:#061526;color:#e9f7ff;font:inherit;font-size:13px;outline:none}
+.vault-reauth input:focus{border-color:#5bcaff;box-shadow:0 0 0 3px #168fff28,0 0 18px #168fff24}
+.vault-reauth button{min-height:44px;border:1px solid #4dbfff;border-radius:10px;background:linear-gradient(110deg,#075d9b,#146bd2);color:#fff;font-size:12px;font-weight:700;cursor:pointer}
+.vault-reauth button:disabled{opacity:.55;cursor:wait}
+.vault-settings-panel{flex-wrap:wrap}
+.vault-settings-copy{min-width:180px;flex:1}
+.vault-settings-actions{display:flex;gap:8px;flex-wrap:wrap}
+.vault-settings-panel .vault-settings-actions button{white-space:nowrap}
+.vault-event-list{width:100%;display:grid;gap:0;border-top:1px solid #174365;margin-top:6px;padding-top:8px}
+.vault-event-list[hidden]{display:none}
+.vault-event{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:9px 2px;border-bottom:1px solid #12314c;font-size:11px;color:#cceaff}
+.vault-event time{font-size:10px;color:#7da8c8;text-align:right}
+.vault-event-empty{font-size:11px;color:#8daecc;padding:8px 0}
+@media(max-width:600px){.vault-settings-actions{width:100%}.vault-settings-panel .vault-settings-actions button{flex:1}.vault-event{align-items:flex-start;flex-direction:column;gap:4px}.vault-event time{text-align:left}}
