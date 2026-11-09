@@ -32,7 +32,7 @@
     }
     const t = themes[new Date().getMonth()];
     if (!t) return;
-    if (active === t.id) return;
+    const themeChanged = active !== t.id;
     active = t.id;
     document.body.dataset.holiday = t.id;
     root.dataset.holiday = t.id;
@@ -48,7 +48,7 @@
       const page = document.getElementById('page');
       if (main && page) main.insertBefore(ribbon, page);
     }
-    ribbon.innerHTML = '<span class="holiday-ribbon-icon" aria-hidden="true">' + t.icon + '</span><span class="holiday-ribbon-copy"><b>' + t.name + '</b><small>' + t.note + '</small></span><span class="holiday-ribbon-tag">' + t.tag + '</span>';
+    if (themeChanged || !ribbon.innerHTML) ribbon.innerHTML = '<span class="holiday-ribbon-icon" aria-hidden="true">' + t.icon + '</span><span class="holiday-ribbon-copy"><b>' + t.name + '</b><small>' + t.note + '</small></span><span class="holiday-ribbon-tag">' + t.tag + '</span>';
     document.querySelector('meta[name="theme-color"]')?.setAttribute('content', t.colors[0]);
   }
   if (typeof render === 'function') {
