@@ -16,7 +16,7 @@
   ];
   const root = document.documentElement;
   let active = '';
-  const base = { bg:'#07111f', panel:'#101f35', panel2:'#172c45', line:'#36516d', blue:'#268cff', cyan:'#42cfff', purple:'#8b7cff', good:'#55d6a2' };
+  const base = Object.fromEntries(['bg','panel','panel2','line','blue','cyan','purple','good'].map(k => [k, getComputedStyle(root).getPropertyValue('--'+k).trim()]));
   function apply() {
     const enabled = typeof settings !== 'undefined' && !!settings.holidaySpecial;
     if (!enabled) {
