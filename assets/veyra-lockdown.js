@@ -21,7 +21,14 @@
   };
   const api = async (action, extra = {}) => {
     const { data, error } = await veyraAuthClient.functions.invoke('veyra-vault-security', { body: { action, ...extra } });
-    if (error) throw new Error(error.message || 'Secure vault service is unavailable.');
+    if (error) {
+      try {
+        const response = error.context;
+        const payload = response && typeof response.clone === 'function' ? await response.clone().json() : null;
+        if (payload) return payload;
+      } catch {}
+      throw new Error(error.message || 'Secure vault service is unavailable.');
+    }
     if (data?.error) throw new Error(data.error);
     return data;
   };
@@ -124,7 +131,7 @@
       status.textContent = 'Security service unavailable · Check your connection';
     }
   };
-  const initializeVault = async () => {
+  const initializeVault = async (requestedMode = 'normal') => {
     try {
       let data = await api('status');
       const legacy = readLegacyConfig();
@@ -136,7 +143,7 @@
       serverStatus = data;
       if (data.requires_reauth) showAccess('reauth');
       else if (!data.has_pin) showAccess('setup');
-      else showAccess('unlock');
+      else showAccess(requestedMode === 'change' ? 'change-current' : 'unlock');
     } catch (error) {
       showAccess('service-error');
       setMessage(error.message || 'Secure vault service unavailable.', true);
@@ -192,9 +199,11 @@
       if (value !== pendingPin) { pendingPin = ''; pendingCurrentPin = ''; showAccess('change-current'); setMessage('PINs did not match. Start again.', true); return; }
       const result = await api('change_pin', { current_pin: pendingCurrentPin, new_pin: value });
       if (result.requires_reauth) { pendingCurrentPin = ''; pendingPin = ''; showAccess('reauth'); return; }
+      if (!result.ok) { pendingCurrentPin = ''; pendingPin = ''; showAccess('change-current'); setMessage('Current PIN was incorrect. ' + Math.max(0, 3 - (result.failed_attempts || 0)) + ' attempt' + ((result.failed_attempts || 0) === 2 ? '' : 's') + ' remaining.', true); return; }
       pendingCurrentPin = '';
       pendingPin = '';
       serverStatus = await api('status');
+      updateSecuritySettings();
       setCopy('PIN UPDATED', 'SECURITY UPDATED', 'Your new PIN is securely stored for this account.');
       overlay.querySelector('#vaultAccess').hidden = true;
       setTimeout(closeOverlay, 1000);
@@ -210,7 +219,8 @@
     submit.disabled = true;
     submit.textContent = 'Verifying…';
     try {
-      await api('verify_password', { password });
+      const result = await api('verify_password', { password });
+      if (!result.ok) throw new Error(result.error || 'Password verification failed.');
       input.value = '';
       serverStatus = await api('status');
       openVault();
@@ -228,14 +238,14 @@
     pendingCurrentPin = '';
     showAccess('change-current');
   };
-  const startLock = async () => {
+  const startLock = async (requestedMode = 'normal') => {
     if (overlay) return;
     busy = false;
     pin = '';
     pendingPin = '';
     pendingCurrentPin = '';
     makeOverlay();
-    setTimeout(initializeVault, 1350);
+    setTimeout(() => initializeVault(requestedMode), 1350);
   };
   button.addEventListener('click', startLock);
 
@@ -248,7 +258,7 @@
     panel.innerHTML = '<div class="vault-settings-copy"><h3>VEYRA Lock Down</h3><p id="vaultSettingsStatus">Checking secure vault status…</p></div><div class="vault-settings-actions"><button type="button" id="vaultSettingsChange">Change vault PIN</button><button type="button" id="vaultSecurityActivity">View security activity</button></div><div class="vault-event-list" id="vaultEventList" hidden></div>';
     root.appendChild(panel);
     updateSecuritySettings();
-    panel.querySelector('#vaultSettingsChange').addEventListener('click', () => { startLock(); setTimeout(() => { if (overlay) startChange(); }, 1500); });
+    panel.querySelector('#vaultSettingsChange').addEventListener('click', () => startLock('change'));
     panel.querySelector('#vaultSecurityActivity').addEventListener('click', async () => {
       const list = panel.querySelector('#vaultEventList');
       try {
