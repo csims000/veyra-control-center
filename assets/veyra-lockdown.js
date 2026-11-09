@@ -25,7 +25,10 @@
       try {
         const response = error.context;
         const payload = response && typeof response.clone === 'function' ? await response.clone().json() : null;
-        if (payload) return payload;
+        if (payload) {
+          if (payload.error && typeof payload.ok !== 'boolean') throw new Error(payload.error);
+          return payload;
+        }
       } catch {}
       throw new Error(error.message || 'Secure vault service is unavailable.');
     }
