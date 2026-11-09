@@ -16,21 +16,27 @@
   ];
   const root = document.documentElement;
   let active = '';
+  const base = { bg:'#07111f', panel:'#101f35', panel2:'#172c45', line:'#36516d', blue:'#268cff', cyan:'#42cfff', purple:'#8b7cff', good:'#55d6a2' };
   function apply() {
-    const month = new Date().getMonth();
-    const t = themes[month];
+    const enabled = typeof settings !== 'undefined' && !!settings.holidaySpecial;
+    if (!enabled) {
+      if (!active) return;
+      active = '';
+      delete document.body.dataset.holiday;
+      delete root.dataset.holiday;
+      ['bg','panel','panel2','line','blue','cyan','purple','good'].forEach(k => root.style.setProperty('--'+k, base[k]));
+      root.style.removeProperty('--holiday-glow');
+      document.getElementById('holidayRibbon')?.remove();
+      document.querySelector('meta[name="theme-color"]')?.setAttribute('content', base.bg);
+      return;
+    }
+    const t = themes[new Date().getMonth()];
     if (!t) return;
-    const changed = active !== t.id;
+    if (active === t.id) return;
     active = t.id;
     document.body.dataset.holiday = t.id;
-    root.style.setProperty('--bg', t.colors[0]);
-    root.style.setProperty('--panel', t.colors[1]);
-    root.style.setProperty('--panel2', t.colors[2]);
-    root.style.setProperty('--line', t.colors[3]);
-    root.style.setProperty('--blue', t.colors[4]);
-    root.style.setProperty('--cyan', t.colors[5]);
-    root.style.setProperty('--purple', t.colors[6]);
-    root.style.setProperty('--good', t.colors[7]);
+    root.dataset.holiday = t.id;
+    ['bg','panel','panel2','line','blue','cyan','purple','good'].forEach((k,i) => root.style.setProperty('--'+k, t.colors[i]));
     root.style.setProperty('--holiday-glow', t.glow);
     let ribbon = document.getElementById('holidayRibbon');
     if (!ribbon) {
@@ -42,15 +48,14 @@
       const page = document.getElementById('page');
       if (main && page) main.insertBefore(ribbon, page);
     }
-    if (changed || !ribbon.innerHTML) ribbon.innerHTML = '<span class="holiday-ribbon-icon" aria-hidden="true">' + t.icon + '</span><span class="holiday-ribbon-copy"><b>' + t.name + '</b><small>' + t.note + '</small></span><span class="holiday-ribbon-tag">' + t.tag + '</span>';
-    document.documentElement.dataset.holiday = t.id;
+    ribbon.innerHTML = '<span class="holiday-ribbon-icon" aria-hidden="true">' + t.icon + '</span><span class="holiday-ribbon-copy"><b>' + t.name + '</b><small>' + t.note + '</small></span><span class="holiday-ribbon-tag">' + t.tag + '</span>';
     document.querySelector('meta[name="theme-color"]')?.setAttribute('content', t.colors[0]);
   }
-  apply();
   if (typeof render === 'function') {
     const originalRender = render;
     render = function(...args) { const result = originalRender.apply(this, args); apply(); return result; };
   }
+  apply();
   window.setInterval(apply, 60000);
   document.addEventListener('visibilitychange', () => { if (!document.hidden) apply(); });
 })();
