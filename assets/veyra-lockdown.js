@@ -12,6 +12,37 @@
   let pendingPin = '';
   let failures = 0;
   let blockedUntil = 0;
+  const attemptKey = () => 'veyra-' + (accountScope() === 'legacy' ? 'legacy-' : 'user-' + accountScope() + '-') + 'vaultAttempts';
+  const readAttempts = () => {
+    try {
+      const state = JSON.parse(localStorage.getItem(attemptKey()) || 'null');
+      if (!state || typeof state.failures !== 'number' || typeof state.blockedUntil !== 'number') return { failures: 0, blockedUntil: 0 };
+      return state;
+    } catch { return { failures: 0, blockedUntil: 0 }; }
+  };
+  const writeAttempts = () => {
+    try { localStorage.setItem(attemptKey(), JSON.stringify({ failures, blockedUntil })); } catch {}
+  };
+  const resetAttempts = () => { failures = 0; blockedUntil = 0; writeAttempts(); };
+  const recordFailure = async () => {
+    failures++;
+    if (failures >= 3) {
+      blockedUntil = Date.now() + 60000;
+      writeAttempts();
+      setMessage('Three incorrect PIN attempts. Signing out of this device…', true);
+      try {
+        if (window.veyraAuthClient?.auth) await window.veyraAuthClient.auth.signOut({ scope: 'local' });
+        else setMessage('Three incorrect attempts. Sign out and sign back in to continue.', true);
+      } catch {
+        setMessage('Three incorrect attempts. Your local sign-out was requested; reload and sign in again.', true);
+      }
+      return;
+    }
+    writeAttempts();
+    setMessage('Incorrect PIN. ' + (3 - failures) + ' attempt' + (3 - failures === 1 ? '' : 's') + ' remaining.', true);
+    pin = '';
+    renderKeypad();
+  };
   let message = '';
   let busy = false;
 
@@ -143,17 +174,14 @@
   };
   const handlePin = async value => {
     if (flow === 'unlock') {
-      if (Date.now() < blockedUntil) { setMessage('Too many attempts. Wait a moment and try again.',true); return; }
+      if (Date.now() < blockedUntil) { setMessage('Security cooldown active. Please wait ' + Math.ceil((blockedUntil - Date.now()) / 1000) + ' seconds before trying again.',true); return; }
+      if (blockedUntil && Date.now() >= blockedUntil) resetAttempts();
       if (await verify(value)) {
-        failures=0;
+        resetAttempts();
         if (!config) { pendingPin=''; showAccess('setup'); setMessage('Default accepted. Create your personal PIN.'); }
         else openVault();
       } else {
-        failures++;
-        if (failures>=5) { blockedUntil=Date.now()+15000; failures=0; }
-        setMessage('Incorrect PIN. Access denied.',true);
-        pin='';
-        renderKeypad();
+        await recordFailure();
       }
       return;
     }
@@ -172,8 +200,8 @@
       return;
     }
     if (flow === 'change-current') {
-      if (await verify(value)) { showAccess('change-new'); setMessage('Current PIN verified.'); }
-      else { pin=''; renderKeypad(); setMessage('Current PIN is incorrect.',true); }
+      if (await verify(value)) { resetAttempts(); showAccess('change-new'); setMessage('Current PIN verified.'); }
+      else { await recordFailure(); }
     }
   };
   const startChange = () => {
@@ -183,7 +211,9 @@
   const startLock = () => {
     if (overlay) return;
     ensureConfig();
-    busy=false; pin=''; flow='unlock'; failures=0; blockedUntil=0;
+    busy=false; pin=''; flow='unlock';
+    ({ failures, blockedUntil } = readAttempts());
+    if (blockedUntil && Date.now() >= blockedUntil) resetAttempts();
     makeOverlay();
   };
   button.addEventListener('click',startLock);
