@@ -1813,3 +1813,53 @@ body[data-holiday="thanksgiving"] .app-icon{
   .holiday-ribbon-copy b{font-size:13px}
   .holiday-ribbon-tag{margin-left:51px;max-width:100%;font-size:8px}
 }
+
+
+/* Thanksgiving: use the uploaded autumn porch photo and warm materials throughout */
+body[data-holiday="thanksgiving"]{background:#1b1009!important;color:#fff0dc}
+body[data-holiday="thanksgiving"]::before{background-image:linear-gradient(rgba(24,12,5,var(--wallpaper-overlay,.20)),rgba(24,12,5,var(--wallpaper-overlay,.20))),var(--veyra-wallpaper,none)!important;background-position:center center!important;background-size:cover!important;background-attachment:fixed!important;opacity:1!important}
+body[data-holiday="thanksgiving"] .app,
+body[data-holiday="thanksgiving"] .main{background:transparent!important}
+body[data-holiday="thanksgiving"] .sidebar{background:linear-gradient(180deg,rgba(42,23,12,.94),rgba(23,13,7,.92))!important;border-right:1px solid rgba(231,157,83,.42)!important;box-shadow:10px 0 36px rgba(25,11,3,.24)!important}
+body[data-holiday="thanksgiving"] .topbar{background:rgba(40,22,11,.82)!important;border-bottom:1px solid rgba(226,153,82,.35)!important}
+body[data-holiday="thanksgiving"] .search button,
+body[data-holiday="thanksgiving"] .profile,
+body[data-holiday="thanksgiving"] .icon-btn,
+body[data-holiday="thanksgiving"] .workspace-chip{background:rgba(53,31,17,.88)!important;border-color:rgba(220,144,70,.44)!important;color:#ffe1b9!important}
+body[data-holiday="thanksgiving"] .panel,
+body[data-holiday="thanksgiving"] .stat,
+body[data-holiday="thanksgiving"] .task-panel,
+body[data-holiday="thanksgiving"] .calendar-panel{background:linear-gradient(145deg,rgba(54,32,18,.93),rgba(31,19,11,.92))!important;border-color:rgba(210,137,68,.48)!important;box-shadow:0 12px 32px rgba(25,11,3,.18)!important;backdrop-filter:blur(12px)}
+body[data-holiday="thanksgiving"] .hero,
+body[data-holiday="thanksgiving"] .deck-hero{background:linear-gradient(105deg,rgba(48,26,13,.95),rgba(95,49,20,.82))!important;border-color:rgba(237,165,91,.56)!important}
+body[data-holiday="thanksgiving"] .hero h1 span,
+body[data-holiday="thanksgiving"] .deck-hero h1 span{background:linear-gradient(90deg,#ffc36d,#f18a3d)!important;background-clip:text!important;color:transparent!important}
+body[data-holiday="thanksgiving"] .hero:before,
+body[data-holiday="thanksgiving"] .hero:after{border-color:rgba(237,153,72,.20)!important;filter:sepia(1)}
+body[data-holiday="thanksgiving"] .nav button{color:#f0d5b7!important}
+body[data-holiday="thanksgiving"] .nav button .ico{color:#efb16f!important}
+body[data-holiday="thanksgiving"] .nav button:hover,
+body[data-holiday="thanksgiving"] .nav button.active{background:linear-gradient(90deg,rgba(135,72,31,.82),rgba(82,44,22,.82))!important;border-color:#d78a45!important;box-shadow:inset 3px 0 #f3b46c!important}
+body[data-holiday="thanksgiving"] .btn,
+body[data-holiday="thanksgiving"] .field,
+body[data-holiday="thanksgiving"] .note-preview,
+body[data-holiday="thanksgiving"] .field-wrap input,
+body[data-holiday="thanksgiving"] .field-wrap textarea{background:rgba(34,21,13,.88)!important;border-color:rgba(207,132,66,.48)!important;color:#fff0dc!important}
+body[data-holiday="thanksgiving"] .btn.primary{background:linear-gradient(105deg,#a84e1e,#dc8734)!important;border-color:#f2b36a!important;color:#fff!important;box-shadow:0 5px 22px rgba(190,91,29,.28)!important}
+body[data-holiday="thanksgiving"] .app-icon{background:linear-gradient(145deg,#865027,#4b2b17)!important;border-color:#bb7a3f!important;color:#ffe1b9!important}
+body[data-holiday="thanksgiving"] .tag,
+body[data-holiday="thanksgiving"] .nav-count{background:rgba(108,59,28,.55)!important;border-color:#b9753c!important;color:#ffd39a!important}
+body[data-holiday="thanksgiving"] .holiday-ribbon{background:linear-gradient(100deg,rgba(69,38,19,.94),rgba(39,23,13,.92))!important;border-color:rgba(224,151,79,.58)!important}
+body[data-holiday="thanksgiving"] .holiday-ribbon-icon{background:rgba(184,100,42,.22)!important;border-color:#b97840!important}
+body[data-holiday="thanksgiving"] .holiday-ribbon-tag{color:#ffd18e!important;background:rgba(151,82,32,.26)!important;border-color:#b97840!important}
+body[data-holiday="thanksgiving"] .panel-head h2,
+body[data-holiday="thanksgiving"] .setting-row b{color:#fff0dc!important}
+body[data-holiday="thanksgiving"] .panel-head p,
+body[data-holiday="thanksgiving"] .setting-row small,
+body[data-holiday="thanksgiving"] .task-copy small,
+body[data-holiday="thanksgiving"] .activity-item small{color:#d6b897!important}
+body[data-holiday="thanksgiving"] .link,
+body[data-holiday="thanksgiving"] .profile small{color:#ffc078!important}
+body[data-holiday="thanksgiving"] .progress span{background:linear-gradient(90deg,#c66a2c,#f3b35f)!important}
+body[data-holiday="thanksgiving"] .activity-dot{background:#e69a50!important;box-shadow:0 0 10px #e69a5066!important}
+@media(max-width:760px){body[data-holiday="thanksgiving"]::before{background-attachment:scroll!important;background-position:center!important}}
