@@ -1,0 +1,38 @@
+name: VEYRA validation
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+    branches: ["main"]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Check JavaScript syntax
+        run: |
+          node --check assets/veyra-auth.js
+          node --check assets/veyra-app.js
+          node --check assets/veyra-tasks.js
+          node --check assets/veyra-effects.js
+          node --check assets/veyra-lockdown.js
+      - name: Check app shell references
+        run: |
+          node --input-type=module <<'NODE'
+          import { readFileSync, existsSync } from 'node:fs';
+          const html = readFileSync('index.html', 'utf8');
+          const required = ['assets/veyra.css', 'assets/veyra-auth.js', 'assets/veyra-app.js', 'assets/veyra-tasks.js', 'assets/veyra-effects.js', 'assets/veyra-lockdown.js'];
+          for (const path of required) {
+            if (!html.includes(path) || !existsSync(path)) throw new Error('Missing asset reference: ' + path);
+          }
+          if (/<script\b(?![^>]*\bsrc=)/i.test(html)) throw new Error('Unexpected inline script found in index.html');
+          console.log('VEYRA shell and assets are connected.');
+          NODE
