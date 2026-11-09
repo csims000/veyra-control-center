@@ -29,8 +29,10 @@
       delete root.dataset.holiday;
       ['bg','panel','panel2','line','blue','cyan','purple','good'].forEach(k => root.style.setProperty('--'+k, base[k]));
       root.style.removeProperty('--holiday-glow');
-      if (baseWallpaper) root.style.setProperty('--veyra-wallpaper', baseWallpaper); else root.style.removeProperty('--veyra-wallpaper');
-      if (baseOverlay) root.style.setProperty('--wallpaper-overlay', baseOverlay); else root.style.removeProperty('--wallpaper-overlay');
+      const personalWallpaper = typeof settings !== 'undefined' && settings.wallpaper ? 'url("' + settings.wallpaper + '")' : baseWallpaper;
+      const personalOverlay = typeof settings !== 'undefined' && settings.wallpaper ? String(settings.wallpaperOverlay ?? .72) : baseOverlay;
+      if (personalWallpaper) root.style.setProperty('--veyra-wallpaper', personalWallpaper); else root.style.removeProperty('--veyra-wallpaper');
+      if (personalOverlay) root.style.setProperty('--wallpaper-overlay', personalOverlay); else root.style.removeProperty('--wallpaper-overlay');
       document.getElementById('holidayRibbon')?.remove();
       document.querySelector('meta[name="theme-color"]')?.setAttribute('content', base.bg);
       return;
