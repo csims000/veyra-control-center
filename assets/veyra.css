@@ -1863,3 +1863,24 @@ body[data-holiday="thanksgiving"] .profile small{color:#ffc078!important}
 body[data-holiday="thanksgiving"] .progress span{background:linear-gradient(90deg,#c66a2c,#f3b35f)!important}
 body[data-holiday="thanksgiving"] .activity-dot{background:#e69a50!important;box-shadow:0 0 10px #e69a5066!important}
 @media(max-width:760px){body[data-holiday="thanksgiving"]::before{background-attachment:scroll!important;background-position:center!important}}
+
+
+/* Keep the Thanksgiving photo crisp: the default animated nebula layer blurs body::before. */
+body[data-holiday="thanksgiving"]::before{
+  inset:0!important;
+  filter:none!important;
+  -webkit-filter:none!important;
+  transform:none!important;
+  animation:none!important;
+  background-size:cover!important;
+  background-position:center center!important;
+  background-repeat:no-repeat!important;
+  background-attachment:fixed!important;
+  opacity:1!important;
+}
+body[data-holiday="thanksgiving"] #space-canvas{display:none!important}
+body[data-holiday="thanksgiving"] .app,
+body[data-holiday="thanksgiving"] .main{position:relative;z-index:1}
+@media(max-width:760px){
+  body[data-holiday="thanksgiving"]::before{background-attachment:scroll!important}
+}
