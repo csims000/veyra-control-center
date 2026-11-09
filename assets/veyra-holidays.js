@@ -19,7 +19,8 @@
   function apply() {
     const month = new Date().getMonth();
     const t = themes[month];
-    if (!t || active === t.id) return;
+    if (!t) return;
+    const changed = active !== t.id;
     active = t.id;
     document.body.dataset.holiday = t.id;
     root.style.setProperty('--bg', t.colors[0]);
@@ -41,11 +42,15 @@
       const page = document.getElementById('page');
       if (main && page) main.insertBefore(ribbon, page);
     }
-    ribbon.innerHTML = '<span class="holiday-ribbon-icon" aria-hidden="true">' + t.icon + '</span><span class="holiday-ribbon-copy"><b>' + t.name + '</b><small>' + t.note + '</small></span><span class="holiday-ribbon-tag">' + t.tag + '</span>';
+    if (changed || !ribbon.innerHTML) ribbon.innerHTML = '<span class="holiday-ribbon-icon" aria-hidden="true">' + t.icon + '</span><span class="holiday-ribbon-copy"><b>' + t.name + '</b><small>' + t.note + '</small></span><span class="holiday-ribbon-tag">' + t.tag + '</span>';
     document.documentElement.dataset.holiday = t.id;
     document.querySelector('meta[name="theme-color"]')?.setAttribute('content', t.colors[0]);
   }
   apply();
+  if (typeof render === 'function') {
+    const originalRender = render;
+    render = function(...args) { const result = originalRender.apply(this, args); apply(); return result; };
+  }
   window.setInterval(apply, 60000);
   document.addEventListener('visibilitychange', () => { if (!document.hidden) apply(); });
 })();
